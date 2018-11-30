@@ -33,4 +33,6 @@ public class RoomTest {
         baddies.add(dragon);
         room1 = new Room(goodies, baddies, 10);
     }
+
+
 }
