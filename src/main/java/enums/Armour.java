@@ -15,4 +15,18 @@ public enum Armour {
     public int getValue(){
         return this.value;
     }
+
+    public static Armour getRandom(){
+        int number = (int)(Math.random() * 4 + 1);
+        if (number == 1) {
+            return Armour.CHAINMAIL;
+        }
+        if (number == 2) {
+            return Armour.LEATHER;
+        }
+        if (number == 3) {
+            return Armour.PLATEMAIL;
+        }
+        else return Armour.RINGMAIL;
+    }
 }

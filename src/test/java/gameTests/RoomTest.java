@@ -10,28 +10,58 @@ import enums.Spell;
 import enums.Weapon;
 import game.Room;
 import org.junit.Before;
+import org.junit.Test;
 
 import java.util.ArrayList;
+
+import static org.junit.Assert.assertEquals;
 
 public class RoomTest {
 
     Room room1;
-    ArrayList<Character> goodies;
-    ArrayList<Character> baddies;
+    ArrayList<Character> goodguys;
+    ArrayList<Character> badguys;
     Knight knight;
     Dragon dragon;
     Creature creature;
 
     @Before
     public void setup(){
-        goodies = new ArrayList<>();
-        baddies = new ArrayList<>();
+        goodguys = new ArrayList<>();
+        badguys = new ArrayList<>();
         creature = new Creature("Ellie", 10, 4, 5, CreatureType.MINION);
         knight = new Knight("bob", 10, 8, 6, Armour.RINGMAIL, Weapon.SWORD);
         dragon = new Dragon("jim", 10, 9, 4, Spell.FIREBALL, creature);
-        goodies.add(knight);
-        baddies.add(dragon);
-        room1 = new Room(goodies, baddies, 10);
+        goodguys.add(knight);
+        badguys.add(dragon);
+        room1 = new Room(goodguys, badguys, 10);
+    }
+
+    @Test
+    public void hasGoodies(){
+        assertEquals(1, room1.getGoodies().size());
+    }
+
+    @Test
+    public void canAddMultipleGoodies(){
+        goodguys.add(dragon);
+        assertEquals(2, room1.getGoodies().size());
+    }
+
+    @Test
+    public void hasBaddies(){
+        assertEquals(1, room1.getBaddies().size());
+    }
+
+    @Test
+    public void canAddMultipleBaddies(){
+        badguys.add(knight);
+        assertEquals(2, room1.getBaddies().size());
+    }
+
+    @Test
+    public void hasTreasure(){
+        assertEquals(10, room1.getTreasure());
     }
 
 

@@ -1,76 +1,108 @@
 package game;
 
 import characters.Character;
+import characters.enemies.Dragon;
+import characters.enemies.Minataur;
+import characters.players.Creature;
+import enums.Armour;
+import enums.CreatureType;
+import enums.Spell;
+import enums.Weapon;
 
 import java.util.ArrayList;
 
 public class Game {
 
-    public Game(){
+    public Game() {
 
     }
 
 
-    public void generateRoom(ArrayList<Character> fellowship){
+    public Room generateRoom(ArrayList<Character> fellowship) {
         int value = Dice.roll();
         ArrayList baddiesArray = new ArrayList<Character>();
         int treasure = 0;
 
-        if (value == 1){
+        if (value == 1) {
             baddiesArray.clear();
             treasure = 10;
         }
-        if (value == 2){
-            //add random enemy
+        if (value == 2) {
+            baddiesArray.add(getRandomEnemy());
             treasure = 10;
         }
-        if (value == 3){
-            //addRandmEnermy
-            //addRandomEnemy
-            //treature = 10
+        if (value == 3) {
+            baddiesArray.add(getRandomEnemy());
+            baddiesArray.add(getRandomEnemy());
+            treasure = 10;
         }
-        if (value == 4){
-            //addRandmEnermy
-            //addRandomEnemy
-            //addRandomEnemy
-            //treature = 10
+        if (value == 4) {
+            baddiesArray.add(getRandomEnemy());
+            baddiesArray.add(getRandomEnemy());
+            baddiesArray.add(getRandomEnemy());
+            treasure = 10;
         }
-        if (value == 5){
-            //addRandmEnermy
-            //addRandomEnemy
-            //addRandomEnemy
-            //addRandomEnemy
-            //treature = 10
-
+        if (value == 5) {
+            baddiesArray.add(getRandomEnemy());
+            baddiesArray.add(getRandomEnemy());
+            baddiesArray.add(getRandomEnemy());
+            baddiesArray.add(getRandomEnemy());
+            treasure = 10;
         }
-        if (value == 6){
-            //addRandomEnemy
-            //treaure = 20
+        if (value == 6) {
+            baddiesArray.add(getRandomEnemy());
+            treasure = 20;
 
         }
         Room room = new Room(fellowship, baddiesArray, treasure);
+        return room;
     }
 
-    //addRandomEnemy
-        //random number 1 or 2
-        //if 1, call addRandomMinataur
-        //if 2, call addRandomDragon
 
-    //addRnadomMinataur
-        //new Minataur(getrand1to10, etc etc)
-        //add to baddies
+    public Character getRandomEnemy(){
+        int number = (int)(Math.random() * 2 + 1);
+        if (number == 1) {
+            return getRandomDragon();
+        }
+        else return getRandomMinataur();
+    }
 
-    //addRandomDragon
-        //new dragon (getRandom1to10, getRandom1to10, etc etc)
-        //add to baddies
 
-    //getRand1to10
+    public Minataur getRandomMinataur(){
+        Minataur minataur = new Minataur("minataur", getRand1to10(), getRand1to10(), getRand1to10(), getRandomArmour(), getRandomWeapon());
+        return minataur;
+    }
 
-    //getRandomArmour
 
-    //getRandomWeapon
+    public Dragon getRandomDragon() {
+        Dragon dragon = new Dragon("dragon", this.getRand1to10(), this.getRand1to10(), this.getRand1to10(), this.getRandomSpell(), this.getRandomCreature());
+        return dragon;
+    }
 
-    //getRandomSpell
+    public int getRand1to10(){
+      return (int)(Math.random() * 10 + 1);
+    }
 
-    //getRandomCreature
+    public Armour getRandomArmour(){
+        return Armour.getRandom();
+    }
+
+    public Weapon getRandomWeapon(){
+        return Weapon.getRandom();
+    }
+
+    public Spell getRandomSpell(){
+        return Spell.getRandom();
+    }
+
+    public Creature getRandomCreature(){
+        Creature creature = new Creature("creature", this.getRand1to10(), this.getRand1to10(), this.getRand1to10(), this.getRandomCreatureType());
+        return creature;
+    }
+
+    public CreatureType getRandomCreatureType(){
+      return CreatureType.getRandom();
+    }
+
+
 }
