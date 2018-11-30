@@ -16,6 +16,16 @@ public class Game {
     public Game() {
 
     }
+    //somewhere create an arraylist of goodies?
+
+
+    //next, we need a room.play method, which lets us fight, and if we win we get treasure and a message
+
+
+    public void play(){
+        Room newRoom = this.generateRoom(){};
+        newRoom.playRoom();
+    }
 
 
     public Room generateRoom(ArrayList<Character> fellowship) {
