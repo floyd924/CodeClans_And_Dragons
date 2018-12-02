@@ -10,6 +10,7 @@ import enums.Spell;
 import enums.Weapon;
 import game.Room;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -65,11 +66,13 @@ public class RoomTest {
     }
 
 
-    @Test
+    @Ignore
     public void canPlayRoom(){
         goodguys.add(dragon);
         goodguys.add(knight);
         goodguys.add(knight);
         room1.playRoom();
+        assertEquals(4, room1.getGoodies().size());
+        assertEquals(0, room1.getBaddies().size());
     }
 }

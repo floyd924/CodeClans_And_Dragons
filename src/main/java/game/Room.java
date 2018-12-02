@@ -2,7 +2,11 @@ package game;
 
 import characters.Character;
 import characters.Fighter;
+import characters.Magician;
+import characters.enemies.Dragon;
+import characters.enemies.Minataur;
 import characters.players.Cleric;
+import characters.players.Knight;
 import characters.players.Wizard;
 
 import java.util.ArrayList;
@@ -63,18 +67,20 @@ public class Room {
 
         Character goodie1 = this.goodies.get(0);
 
-        if (goodie1 instanceof Fighter){
-            Fighter fighter1 = (Fighter) goodie1;
-            goodieFightScore = fighter1.fightScore(Dice.roll());
-        }
-        if (goodie1 instanceof Wizard){
-            Wizard wizard1 = (Wizard) goodie1;
-            goodieFightScore = wizard1.fightScore(Dice.roll());
-        }
-        else {
-            Cleric cleric1 = (Cleric) goodie1;
-            goodieFightScore = cleric1.fightScore(Dice.roll());
-        }
+        goodieFightScore = goodie1.fightScore(Dice.roll());
+
+//        if (goodie1 instanceof Knight){
+//            Knight knight1 = (Knight) goodie1;
+//            goodieFightScore = knight1.fightScore(Dice.roll());
+//        }
+//        if (goodie1 instanceof Magician){
+//            Magician magician1 = (Magician) goodie1;
+//            goodieFightScore = magician1.fightScore(Dice.roll());
+//        }
+//        else {
+//            Cleric cleric1 = (Cleric) goodie1;
+//            goodieFightScore = cleric1.fightScore(Dice.roll());
+//        }
 
        return goodieFightScore;
 
@@ -86,14 +92,16 @@ public class Room {
 
         Character baddie1 = this.baddies.get(0);
 
-        if (baddie1 instanceof Fighter){
-            Fighter fighter1 = (Fighter) baddie1;
-            baddieFightScore = fighter1.fightScore(Dice.roll());
-        }
-        if (baddie1 instanceof Wizard){
-            Wizard wizard1 = (Wizard) baddie1;
-            baddieFightScore = wizard1.fightScore(Dice.roll());
-        }
+        baddieFightScore = baddie1.fightScore(Dice.roll());
+
+//        if (baddie1 instanceof Dragon){
+//            Dragon dragon1 = (Dragon) baddie1;
+//            baddieFightScore = dragon1.fightScore(Dice.roll());
+//        }
+//        if (baddie1 instanceof Minataur){
+//            Minataur minataur1 = (Minataur) baddie1;
+//            baddieFightScore = minataur1.fightScore(Dice.roll());
+//        }
 
         return baddieFightScore;
     }
