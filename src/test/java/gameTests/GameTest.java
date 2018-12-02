@@ -59,4 +59,10 @@ public class GameTest {
     public void canGetRandomMinataur(){
         assertEquals(Weapon.SWORD, game1.getRandomMinataur().getWeapon());
     }
+
+    @Ignore
+    public void canGetRandomEnemy(){
+        assertEquals("dragon", game1.getRandomEnemy().getName());
+    }
+
 }

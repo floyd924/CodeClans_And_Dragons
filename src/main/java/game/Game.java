@@ -23,7 +23,7 @@ public class Game {
 
 
 //    public void play(){
-//        Room newRoom = this.generateRoom(){};
+//        Room newRoom = this.generateRoom( pass in araylist of fellowship);
 //        newRoom.playRoom();
 //    }
 
