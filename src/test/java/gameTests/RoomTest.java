@@ -65,4 +65,11 @@ public class RoomTest {
     }
 
 
+    @Test
+    public void canPlayRoom(){
+        goodguys.add(dragon);
+        goodguys.add(knight);
+        goodguys.add(knight);
+        room1.playRoom();
+    }
 }
