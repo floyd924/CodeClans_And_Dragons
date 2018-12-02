@@ -35,9 +35,18 @@ public class Room {
         return this.treasure;
     }
 
-    public void playRoom(){
+    public int playRoom(){
         checkForFight();
+        int goodiesPrize = 0;
 
+        if (goodies.size() > 0){
+            goodiesPrize = getTreaure();
+        }
+        else {
+            everyoneIsDead();
+        }
+
+        return goodiesPrize;
     }
 
     public void checkForFight(){
@@ -70,7 +79,7 @@ public class Room {
         goodieFightScore = goodie1.fightScore(Dice.roll());
 
 //        if (goodie1 instanceof Knight){
-//            Knight knight1 = (Knight) goodie1;
+//            Knight knight1 = (Knight)p goodie1;
 //            goodieFightScore = knight1.fightScore(Dice.roll());
 //        }
 //        if (goodie1 instanceof Magician){
@@ -121,6 +130,14 @@ public class Room {
         if (baddies.get(0).getHealth() < 1){
             baddies.remove(0);
         }
+    }
+
+    public int getTreaure(){
+        return this.treasure;
+    }
+
+    public String everyoneIsDead(){
+        return "Nobody survived from either side";
     }
 
 
